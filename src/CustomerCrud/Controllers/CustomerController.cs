@@ -5,6 +5,14 @@ using CustomerCrud.Repositories;
 
 namespace CustomerCrud.Controllers;
 
-public class CustomerController
+[ApiController]
+[Route("/controller")]
+public class CustomerController: ControllerBase
 {
+  private readonly ICustomerRepository _repository;
+  [HttpGet] 
+  public ActionResult GetALl() {
+    var customer = _repository.GetAll();
+    return Ok(customer);
+  }
 }
