@@ -40,7 +40,7 @@ public class CustomerController: ControllerBase
     return CreatedAtAction("GetById", new { id = customer.Id }, customer);
   }
 
-  [HttpPut] 
+  [HttpPut("{id}")]
   public ActionResult Create(CustomerRequest request, int id) {
     var update = _repository.Update(id, new {
       Name = request.Name,
@@ -50,7 +50,7 @@ public class CustomerController: ControllerBase
     });
 
     if(!update) return NotFound("Customer not found");
-    return NoContent();
+    return Ok($"Customer {id} updated");
   }
 
   [HttpDelete("{id}")]
