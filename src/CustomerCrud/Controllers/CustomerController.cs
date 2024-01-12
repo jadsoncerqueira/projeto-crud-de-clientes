@@ -10,6 +10,11 @@ namespace CustomerCrud.Controllers;
 public class CustomerController: ControllerBase
 {
   private readonly ICustomerRepository _repository;
+
+  public CustomerController(ICustomerRepository CustomerRepository)
+  {
+    _repository = CustomerRepository;
+  }
   [HttpGet] 
   public ActionResult GetALl() {
     var customer = _repository.GetAll();
