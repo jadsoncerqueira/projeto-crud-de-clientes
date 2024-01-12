@@ -41,7 +41,7 @@ public class CustomerController: ControllerBase
   }
 
   [HttpPut("{id}")]
-  public ActionResult Create(CustomerRequest request, int id) {
+  public ActionResult Update(CustomerRequest request, int id) {
     var update = _repository.Update(id, new {
       Name = request.Name,
       CPF = request.CPF,
