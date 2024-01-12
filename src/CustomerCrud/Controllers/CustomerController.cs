@@ -53,4 +53,14 @@ public class CustomerController: ControllerBase
     return NoContent();
   }
 
+  [HttpDelete("{id}")]
+    public ActionResult Delete(int id)
+    {
+        var diDelete = _repository.Delete(id);
+
+        if (!diDelete) return NotFound("Customer not found");
+
+        return NoContent();
+    }
+
 }
